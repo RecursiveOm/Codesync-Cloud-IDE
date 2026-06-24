@@ -1,0 +1,18 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 60
+      arrivalRate: 10
+  engines:
+    socketio: {}
+
+scenarios:
+  - name: "CodeSync collaboration test"
+    engine: socketio
+    flow:
+      - emit:
+          channel: "join"
+          data:
+            room: "test-room"
+            username: "test-user"
+      - think: 5
